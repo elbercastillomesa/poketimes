@@ -7,7 +7,17 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-    console.log(action);
+    if(action.type = "DELETE_POST"){
+        let newPosts = state.posts.filter(
+            posts => {
+                return action.id !== posts.id
+            }
+        );
+        return {
+            ...state,   //keep all the other properties and only override "posts"
+            posts: newPosts
+        }
+    }
     return state;
 }
 
